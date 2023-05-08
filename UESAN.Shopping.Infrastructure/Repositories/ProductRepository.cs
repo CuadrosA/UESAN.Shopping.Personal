@@ -50,6 +50,9 @@ namespace UESAN.Shopping.Infrastructure.Repositories
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
 
+            if (product != null)
+                return false;
+
             product.IsActive = false;
             int rows = await _dbContext.SaveChangesAsync();
             return rows > 0;
