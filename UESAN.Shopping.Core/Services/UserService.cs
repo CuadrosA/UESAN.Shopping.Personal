@@ -82,7 +82,7 @@ namespace UESAN.Shopping.Core.Services
         public async Task<bool> Update(UserUpdateDTO userUpdateDTO)
         {
             var user = await _userRepository.GetById(userUpdateDTO.Id);
-            if (user != null)
+            if (user == null)
                 return false;
             user.FirstName = userUpdateDTO.FirstName;
             user.LastName = userUpdateDTO.LastName;
@@ -101,7 +101,7 @@ namespace UESAN.Shopping.Core.Services
         public async Task<bool> Delete(int id)
         {
             var user = await _userRepository.GetById(id);
-            if (user != null) 
+            if (user == null) 
                 return false;
 
             var result = await _userRepository.Delete(id);
