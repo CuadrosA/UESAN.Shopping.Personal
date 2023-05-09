@@ -8,8 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Mappings\" />
     <Folder Include="Identity\" />
+    <Folder Include="Mappings\" />
     <Folder Include="Shared\" />
   </ItemGroup>
 
