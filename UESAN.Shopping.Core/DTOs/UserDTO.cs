@@ -20,6 +20,11 @@ namespace UESAN.Shopping.Core.DTOs
         public string? Type { get; set; }
     }
 
+    public class UserproveDTO
+    {
+        public int Id { get; set; }
+        public string? Password { get; set; }
+    }
     public class UserInsertDTO
     {
         public int Id { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using UESAN.Shopping.Core.DTOs;
 using UESAN.Shopping.Core.Entities;
 using UESAN.Shopping.Core.Interfaces;
@@ -32,6 +33,13 @@ namespace UESAN.Shopping.API.Controllers
             if (user == null) 
                 return NotFound();
 
+            return Ok(user);
+        }
+
+        [HttpGet("{id, String}")]
+        public async Task<IActionResult> Prove(int id, string password)
+        {
+            bool user = await _userService.Prove(id,password ) ;
             return Ok(user);
         }
 

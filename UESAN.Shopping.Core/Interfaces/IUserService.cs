@@ -9,5 +9,6 @@ namespace UESAN.Shopping.Core.Interfaces
         Task<UserDTO> GetById(int id);
         Task<bool> Insert(UserInsertDTO userInsertDTO);
         Task<bool> Update(UserUpdateDTO userUpdateDTO);
+        Task<bool> Prove(int id, string password);
     }
 }

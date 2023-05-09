@@ -62,6 +62,16 @@ namespace UESAN.Shopping.Core.Services
             return userDTO;
         }
 
+        public async Task<bool> Prove(int id, String password)
+        {
+            var user = await _userRepository.GetById(id);
+            var userp = "";
+            if (user == null | user.Password != userp)
+                return false;
+
+            return true;
+        }
+
         public async Task<bool> Insert(UserInsertDTO userInsertDTO)
         {
             var user = new User();
