@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UESAN.Shopping.Core.DTOs;
-using UESAN.Shopping.Core.Entities;
 using UESAN.Shopping.Core.Interfaces;
 
 namespace UESAN.Shopping.API.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -18,53 +16,23 @@ namespace UESAN.Shopping.API.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [HttpPost("SignIn")]
+        public async Task<IActionResult> SignIn([FromBody] UserAuthenticationDTO userDTO)
         {
-            var user = await _userService.GetAll();
-            return Ok(user);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var user = await _userService.GetById(id);
-            if (user == null) 
+            var result = await _userService.Validate(userDTO.Email, userDTO.Password);
+            if (result == null)
                 return NotFound();
 
-            return Ok(user);
+            return Ok(result);
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Insert(UserInsertDTO user)
+        [HttpPost("SignUp")]
+        public async Task<IActionResult> SignUp(UserAuthRequestDTO userDTO)
         {
-            var result = await _userService.Insert(user);
+            var result = await _userService.Register(userDTO);
             if (!result)
                 return BadRequest();
-            return NoContent();
-        }
-                  
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, UserUpdateDTO user)
-        {
-            if (id != user.Id)
-                return NotFound();
 
-            var result = await _userService.Update(user);
-            if (!result)
-                return BadRequest();
-            
-            return NoContent();
+            return Ok(result);
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var result = await _userService.Delete(id);
-            if(!result)
-                return BadRequest();
-
-            return NoContent();
-        }
-
     }
 }

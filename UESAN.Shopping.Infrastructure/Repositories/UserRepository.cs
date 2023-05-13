@@ -19,52 +19,26 @@ namespace UESAN.Shopping.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public UserRepository()
-        {
-        }
-
-        public async Task<IEnumerable<User>> GetAll()
-        {
-            return await _dbContext.User.ToListAsync();
-        }
-
-        public async Task<User> GetById(int id)
+        public async Task<User> SignIn(string email, string password)
         {
             return await _dbContext
                 .User
-                .Where (x => x.Id == id)
+                .Where(x => x.Email == email && x.Password == password)
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<bool> Insert(User user)
+        public async Task<bool> SignUp(User user)
         {
             await _dbContext.User.AddAsync(user);
             int rows = await _dbContext.SaveChangesAsync();
             return rows > 0;
         }
 
-        public async Task<bool> Update(User user)
+        public async Task<bool> IsEmailRegistered(string email)
         {
-            _dbContext.User.Update(user);
-            int rows = await _dbContext.SaveChangesAsync();
-            return rows > 0;
-        }
-
-        public async Task<bool> Delete(int id)
-        {
-            var user = await _dbContext
+            return await _dbContext
                 .User
-                .Where(x => x.Id == id)
-                .FirstOrDefaultAsync();
-
-            if (user != null)
-                return false;
-
-            user.IsActive = false;
-            int rows = await _dbContext.SaveChangesAsync();
-            return rows > 0;
+                .Where(x => x.Email == email).AnyAsync();
         }
-
-
     }
 }

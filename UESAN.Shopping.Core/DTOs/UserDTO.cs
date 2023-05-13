@@ -12,56 +12,42 @@ namespace UESAN.Shopping.Core.DTOs
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public String? Country { get; set; }
-        public String? Address { get; set; }
+        public string? Country { get; set; }
+        public string? Address { get; set; }
         public string? Email { get; set; }
-        public String? Password { get; set; }
+        public string? Password { get; set; }
         public bool? IsActive { get; set; }
         public string? Type { get; set; }
     }
 
-    public class UserInsertDTO
+    public class UserAuthResponseDTO
     {
         public int Id { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public String? Country { get; set; }
-        public String? Address { get; set; }
+        public string? Country { get; set; }
+        public string? Address { get; set; }
         public string? Email { get; set; }
-        public String? Password { get; set; }
-        public bool? IsActive { get; set; }
-        public string? Type { get; set; }
+        public string? Token { get; set; }
     }
 
-    public class UserDescriptionDTO
+    public class UserAuthRequestDTO
     {
-        public int Id { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public String? Country { get; set; }
-        public String? Address { get; set; }
+        public string? Country { get; set; }
+        public string? Address { get; set; }
         public string? Email { get; set; }
-        public String? Password { get; set; }
-        public bool? IsActive { get; set; }
-        public string? Type { get; set; }
+        public string? Password { get; set; }
+        //public bool? IsActive { get; set; }
+        //public string? Type { get; set; }
     }
 
-    public class UserUpdateDTO
+    public class UserAuthenticationDTO
     {
-        public int Id { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public DateTime? DateOfBirth { get; set; }
-        public String? Country { get; set; }
-        public String? Address { get; set; }
         public string? Email { get; set; }
-        public String? Password { get; set; }
-        public bool? IsActive { get; set; }
-        public string? Type { get; set; }
+        public string? Password { get; set; }
     }
-
-
-
 }
