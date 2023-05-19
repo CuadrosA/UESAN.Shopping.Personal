@@ -78,7 +78,7 @@ namespace UESAN.Shopping.Core.Services
             var product = await _productRepository.GetById(productUpdateDTO.Id);
             if (product == null) 
                 return false;
-            product.Description += productUpdateDTO.Description;
+            product.Description = productUpdateDTO.Description;
             product.ImageUrl = productUpdateDTO.ImageUrl;
             product.Stock = productUpdateDTO.Stock;
             product.Price = productUpdateDTO.Price;

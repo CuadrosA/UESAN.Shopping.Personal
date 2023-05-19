@@ -45,15 +45,15 @@ namespace UESAN.Shopping.Infrastructure.Repositories
         }
         public async Task<bool> Delete(int id)
         {
-            var product = await _dbContext
+            var findproduct = await _dbContext
                 .Product
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
 
-            if (product != null)
+            if (findproduct == null)
                 return false;
 
-            product.IsActive = false;
+            findproduct.IsActive = false;
             int rows = await _dbContext.SaveChangesAsync();
             return rows > 0;
         }

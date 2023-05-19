@@ -22,7 +22,7 @@ namespace UESAN.Shopping.API.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
-        { 
+        {
             var categories = await _categoryService.GetAll();
             return Ok(categories);
         }
@@ -31,7 +31,7 @@ namespace UESAN.Shopping.API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var category = await _categoryService.GetById(id);
-            if(category==null)
+            if (category == null)
                 return NotFound();
 
             return Ok(category);
@@ -40,8 +40,8 @@ namespace UESAN.Shopping.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Insert(CategoryInsertDTO category)
         {
-           var result =  await _categoryService.Insert(category);
-           if(!result)
+            var result = await _categoryService.Insert(category);
+            if (!result)
                 return BadRequest();
             return NoContent();
         }
@@ -53,14 +53,14 @@ namespace UESAN.Shopping.API.Controllers
                 return NotFound();
 
             var result = await _categoryService.Update(category);
-            if(!result)
+            if (!result)
                 return BadRequest();
-            
+
             return NoContent();
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
-        { 
+        {
             var result = await _categoryService.Delete(id);
             if (!result)
                 return BadRequest();

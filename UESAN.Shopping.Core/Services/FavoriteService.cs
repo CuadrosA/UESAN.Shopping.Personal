@@ -40,9 +40,9 @@ namespace UESAN.Shopping.Core.Services
             var favorite = await _favoriteRepository.GetById(id);
             var favoriteDTO = new FavoriteDTO();
             favoriteDTO.UserId = favorite.UserId;
-            favorite.Id = favorite.Id;
-            favorite.ProductId = favorite.ProductId;
-            favorite.CreatedAt = favorite.CreatedAt;
+            favoriteDTO.Id = favorite.Id;
+            favoriteDTO.ProductId = favorite.ProductId;
+            favoriteDTO.CreatedAt = favorite.CreatedAt;
             return favoriteDTO;
         }
 
@@ -77,6 +77,8 @@ namespace UESAN.Shopping.Core.Services
                 return false;
 
             var result = await _favoriteRepository.Delete(id);
+            if (favorite != null)
+                return true;
             return result;
         }
 

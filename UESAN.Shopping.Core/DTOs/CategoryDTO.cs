@@ -13,13 +13,13 @@ namespace UESAN.Shopping.Core.DTOs
         public bool? IsActive { get; set; }
     }
 
-    public class CategoryDescriptionDTO 
+    public class CategoryDescriptionDTO
     {
         public int Id { get; set; }
         public string? Description { get; set; }
     }
 
-    public class CategoryInsertDTO 
+    public class CategoryInsertDTO
     {
         public string? Description { get; set; }
         public bool? IsActive { get; set; }

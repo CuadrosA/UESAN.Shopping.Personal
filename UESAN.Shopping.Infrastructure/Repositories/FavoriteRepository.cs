@@ -57,8 +57,13 @@ namespace UESAN.Shopping.Infrastructure.Repositories
 
             if (findFavorite == null)
                 return false;
-
-            return true;
+            else
+            {
+                findFavorite.Id = 6;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            
         }
 
 

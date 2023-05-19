@@ -22,12 +22,12 @@ namespace UESAN.Shopping.Core.Services
         {
             var categories = await _categoryRepository.GetAll();
             var categoriesDTO = new List<CategoryDescriptionDTO>();
-            
+
             foreach (var category in categories)
             {
                 var categoryDTO = new CategoryDescriptionDTO();
                 categoryDTO.Id = category.Id;
-                categoryDTO.Description = category.Description;                
+                categoryDTO.Description = category.Description;
 
                 categoriesDTO.Add(categoryDTO);
             }
